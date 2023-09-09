@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Scientific Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: crimson;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 250px;
+            height: 60px;
+            padding: 10px;
+            font-size: 18px;
+            box-sizing: border-box;
+            background-color: gray;
+            color: whitesmoke;
+        }
+
+        input[type="button"] {
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+            margin: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            border-radius: 55%;
+
+        }
+
+        input[type="button"]:hover {
+            transform: scale(1.2);
+            background-color: rgb(228, 60, 94);
+            color: whitesmoke;
+
+        }
+
+        #result {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        /* Media query for responsiveness */
+        @media (max-width: 768px) {
+            input[type="text"] {
+                width: 100%;
+            }
+
+            input[type="button"] {
+                width: 30px;
+                height: 30px;
+                font-size: 14px;
+            }
+        }
+    </style>
+    <script>
+        // JavaScript code for calculator
+        function appendValue(value) {
+            document.getElementById('expression').value += value;
+        }
+
+        function clearInput() {
+            document.getElementById('expression').value = '';
+            document.getElementById('result').innerHTML = '';
+        }
+
+        function calculate() {
+            try {
+                var expression = document.getElementById('expression').value;
+                var result = eval(expression);
+
+                document.getElementById('result').innerHTML = "Result: " + result;
+            } catch (error) {
+                document.getElementById('result').innerHTML = "Error: Invalid expression";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1 style="color: aliceblue;">Scientific Calculator</h1>
+    <form>
+        <input type="text" id="expression" placeholder="Enter expression" readonly><br>
+        <input type="button" value="log(" onclick="appendValue('Math.log(')">
+        <input type="button" value="ln(" onclick="appendValue('Math.log(')">
+        <input type="button" value="sin(" onclick="appendValue('Math.sin(')">
+        <input type="button" value="cos(" onclick="appendValue('Math.cos(')"><br>
+        <input type="button" value="tan(" onclick="appendValue('Math.tan(')">
+        <input type="button" value="root(" onclick="appendValue('Math.sqrt(')">
+        <input type="button" value="pie(" onclick="appendValue('Math.PI')">
+        <input type="button" value="e" onclick="appendValue('Math.E')"><br>
+        <input type="button" value="1" onclick="appendValue('1')">
+        <input type="button" value="2" onclick="appendValue('2')">
+        <input type="button" value="3" onclick="appendValue('3')">
+        <input type="button" value="+" onclick="appendValue('+')"><br>
+        <input type="button" value="4" onclick="appendValue('4')">
+        <input type="button" value="5" onclick="appendValue('5')">
+        <input type="button" value="6" onclick="appendValue('6')">
+        <input type="button" value="-" onclick="appendValue('-')"><br>
+        <input type="button" value="7" onclick="appendValue('7')">
+        <input type="button" value="8" onclick="appendValue('8')">
+        <input type="button" value="9" onclick="appendValue('9')">
+        <input type="button" value="*" onclick="appendValue('*')"><br>
+        <input type="button" value="0" onclick="appendValue('0')">
+        <input type="button" value="." onclick="appendValue('.')">
+        <input type="button" value="=" onclick="calculate()">
+        <input type="button" value="/" onclick="appendValue('/')"><br>
+        <input type="button" value="^" onclick="appendValue('**')">
+        <input type="button" value="(" onclick="appendValue('(')">
+        <input type="button" value=")" onclick="appendValue(')')">
+        <input type="button" value="C" onclick="clearInput()"><br>
+        <p id="result" style="color: white; "></p>
+    </form>
+</body>
+
+</html>
